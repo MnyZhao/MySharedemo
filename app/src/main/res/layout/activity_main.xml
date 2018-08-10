@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+    <Button
+        android:id="@+id/go_wx"
+        android:text="GO WX"
+        android:background="@drawable/down"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/btn_share_qq"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/down"
+        android:text="shareQQ"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_share_qzone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/down"
+        android:text="Qzone"
+        android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btn_share_sina"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/down"
+        android:text="Sina"
+        android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btn_share_wx"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/down"
+        android:visibility="gone"
+        android:text="WeChat"
+        android:textColor="@android:color/white" />
+    <Button
+        android:id="@+id/btn_share_wxLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/down"
+        android:text="WeChatLine"
+        android:visibility="gone"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>

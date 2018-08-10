@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">shareUtil</string>
+    <string name="errcode_success">发送成功</string>
+    <string name="errcode_cancel">发送取消</string>
+    <string name="errcode_deny">发送被拒绝</string>
+    <string name="errcode_unsupported">不支持错误</string>
+    <string name="errcode_unknown">发送返回</string>
+    <!--key name-->
+    <string name="wx_app_id">WX_APP_ID</string>
+    <string name="qq_app_id">QQ_APP_ID</string>
+    <string name="sina_app_id">SINA_APP_ID</string>
+</resources>
