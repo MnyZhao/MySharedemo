@@ -19,3 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+-keep class com.sina.weibo.sdk.** { *; }
+-keep class com.tencent.**{*;}
+-keep class com.tencent.mm.opensdk.**{*;}
