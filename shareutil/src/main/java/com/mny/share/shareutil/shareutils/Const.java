@@ -15,7 +15,7 @@ public class Const {
      * 分享平台的appkey，开发者需要分别在qq，微信，微博平台根据包名和正式签名文件的md5值（申请时是MD5值转小写并去掉冒号）申请对应的key
      * 切记包名和签名
      */
-    public static String WX_APP_ID = "wxa97f2cfdfd4c5fc5";
+    public static String WX_APP_ID = "wx16d6a07cd9c54e92";
 
     public static String SINA_APP_ID = "968652578";
 
@@ -29,7 +29,7 @@ public class Const {
     }
     public void initAppID(Context context) {
         SINA_APP_ID = getMetaData(context, context.getResources().getString(R.string.sina_app_id));
-        WX_APP_ID = getMetaData(context, context.getResources().getString(R.string.sina_app_id));
+        WX_APP_ID = getMetaData(context, context.getResources().getString(R.string.wx_app_id));
         QQ_APP_ID = getMetaData(context, context.getResources().getString(R.string.qq_app_id));
     }
 

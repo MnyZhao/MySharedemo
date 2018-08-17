@@ -46,9 +46,9 @@ public class WXEntryActivity extends Activity {
     private void initView() {
         BtnWx = findViewById(R.id.btn_share_wxsession);
         BtnWx.setOnClickListener(listener);
-    BtnWXLine = findViewById(R.id.btn_share_wxtimeline);
+        BtnWXLine = findViewById(R.id.btn_share_wxtimeline);
         BtnWXLine.setOnClickListener(listener);
-}
+    }
 
     View.OnClickListener listener = new View.OnClickListener() {
         @Override
@@ -56,12 +56,12 @@ public class WXEntryActivity extends Activity {
             switch (view.getId()) {
                 case R.id.btn_share_wxsession:
                     /*封装类后*/
-                    shareHelperUtils.shareWxSession(WXEntryActivity.this,shareContent);
+                    shareHelperUtils.shareWxSession(WXEntryActivity.this, shareContent);
 
                     break;
                 case R.id.btn_share_wxtimeline:
                     /*封装类后*/
-                    shareHelperUtils.shareWxTimeLine(WXEntryActivity.this,shareContent);
+                    shareHelperUtils.shareWxTimeLine(WXEntryActivity.this, shareContent);
 
                     break;
             }
@@ -72,7 +72,8 @@ public class WXEntryActivity extends Activity {
     protected void onNewIntent(Intent intent) {
         super.onNewIntent(intent);
         /*封装类后*/
-        shareHelperUtils.addWxCallBackListener(this,intent);
+        setIntent(intent);
+        shareHelperUtils.addWxCallBackListener(this, intent);
 
     }
 

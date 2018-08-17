@@ -37,7 +37,7 @@
                       android:name=".wxapi.WXEntryActivity"
                       android:exported="true"
                       android:label="@string/app_name"
-                      android:launchMode="singleTop"></activity>
+                      android:launchMode="singleTask"></activity>
          权限不要忘记
            <uses-permission android:name="android.permission.INTERNET" />
            <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -69,10 +69,10 @@ WeChat:
         - 2、完成对WeChat初始化后
         - 3、通过ShareHelperUtils的实例调用shareWxSession(),shareWxTimeLine()分享到聊天界面和朋友圈
     *添加分享监听事件
-        - 1、要重写Activity中的onNewIntent()方法
+        - 1、要重写Activity中的onNewIntent()方法并 调用setIntent(intent)
         - 2、并在其中通过ShareHelperUtils的实例调用addWxCallBackListener()
 注意:
 ------
           - 1、因为微信的对回调结果的监听要求必须在WXEntryActivity中所以我们要在项目目录下新建一个wxapi
           - 2、 并在其中实现对wechat sina qq 的分享以及回调事件的监听与其他Activity实现方式没什么不同
-          - 3、 onNewIntent()方法要重新设置setIntent() 因为分享页面的启动模式设置成singleTop比较好
+          - 3、 onNewIntent()方法要重新设置setIntent() 分享页面的启动模式设置成singleTask避免重复创建页面导致intent消息接收不到
