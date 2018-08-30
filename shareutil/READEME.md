@@ -70,9 +70,21 @@ WeChat:
         - 3、通过ShareHelperUtils的实例调用shareWxSession(),shareWxTimeLine()分享到聊天界面和朋友圈
     *添加分享监听事件
         - 1、要重写Activity中的onNewIntent()方法
-        - 2、并在其中通过ShareHelperUtils的实例调用addWxCallBackListener()
+        - 2、并在其中通过ShareHelperUtils的实例调用addWxCallBackListener()或者创建utils时直接传进去
 注意:
 ------
           - 1、因为微信的对回调结果的监听要求必须在WXEntryActivity中所以我们要在项目目录下新建一个wxapi
           - 2、 并在其中实现对wechat sina qq 的分享以及回调事件的监听与其他Activity实现方式没什么不同
           - 3、 onNewIntent()方法要重新设置setIntent() 因为分享页面的启动模式设置成singleTop比较好
+
+登陆
+------
+    * 配置与上述Share相同 暂时还没有微信登陆
+    * 调用
+        1、通过LoginHelper 的实例 调用 qqLogin() sinaLogin()
+    * 注意
+        1、要想接收到回调消息必须在onActivityResult中通过LoginHelper的实例来调用下面两个方法
+            - sina
+              - setSinaStartActivityResult(requestCode, resultCode, data)
+            - qq
+              - setQqStartActivityResult(requestCode, resultCode, data)

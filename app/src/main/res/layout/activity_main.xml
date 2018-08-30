@@ -14,6 +14,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
+        android:id="@+id/go_login"
+        android:text="GO LOGIN"
+        android:background="@drawable/down"
+        android:textColor="@android:color/white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
         android:id="@+id/btn_share_qq"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

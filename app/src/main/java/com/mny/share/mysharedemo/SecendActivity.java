@@ -17,6 +17,7 @@ import com.mny.share.shareutil.shareutils.Util;
 
 public class SecendActivity extends AppCompatActivity {
     private Button BtnGoWx ,BtnShareQQ, BtnShareQzone, BtnShareSina, BtnShareWxSession, BtnShareWxTimeLine;
+    private Button BtnGOLogin;
     public static ShareContent shareContent;
     public ShareHelperUtils shareHelperUtils;
 
@@ -40,7 +41,7 @@ public class SecendActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         shareHelperUtils = new ShareHelperUtils(this, callBackListener);
-        shareHelperUtils.initSina(this);
+//        shareHelperUtils.initSina(this);
         initViews();
     }
     private void initViews() {
@@ -56,6 +57,8 @@ public class SecendActivity extends AppCompatActivity {
         BtnShareWxSession.setOnClickListener(listener);
         BtnShareWxTimeLine = (Button) findViewById(R.id.btn_share_wxLine);
         BtnShareWxSession.setOnClickListener(listener);
+        BtnGOLogin=findViewById(R.id.go_login);
+        BtnGOLogin.setOnClickListener(listener);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
@@ -65,6 +68,11 @@ public class SecendActivity extends AppCompatActivity {
                 case R.id.go_wx:
                     Intent intentWx = new Intent(SecendActivity.this, WXEntryActivity.class);
                     startActivity(intentWx);
+                    finish();
+                    break;
+                case R.id.go_login:
+                    Intent intentlogin = new Intent(SecendActivity.this, LoginActivity.class);
+                    startActivity(intentlogin);
                     finish();
                     break;
                 case R.id.btn_share_qq:
