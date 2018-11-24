@@ -16,7 +16,7 @@ import com.mny.share.shareutil.shareutils.Util;
 
 
 public class SecendActivity extends AppCompatActivity {
-    private Button BtnGoWx ,BtnShareQQ, BtnShareQzone, BtnShareSina, BtnShareWxSession, BtnShareWxTimeLine;
+    private Button BtnGoWx, BtnShareQQ, BtnShareQzone, BtnShareSina, BtnShareWxSession, BtnShareWxTimeLine;
     private Button BtnGOLogin;
     public static ShareContent shareContent;
     public ShareHelperUtils shareHelperUtils;
@@ -24,7 +24,7 @@ public class SecendActivity extends AppCompatActivity {
     static {
         shareContent = new ShareContent("测试标题"
                 , "测试内容"
-                , "https://www.baidu.com"
+                , "http://f.amap.com/4cpb_0D4My0"
                 , "http://imgcache.qq.com/qzone/space_item/pre/0/66768.gif");
     }
 
@@ -44,8 +44,9 @@ public class SecendActivity extends AppCompatActivity {
 //        shareHelperUtils.initSina(this);
         initViews();
     }
+
     private void initViews() {
-        BtnGoWx=findViewById(R.id.go_wx);
+        BtnGoWx = findViewById(R.id.go_wx);
         BtnGoWx.setOnClickListener(listener);
         BtnShareQQ = (Button) findViewById(R.id.btn_share_qq);
         BtnShareQQ.setOnClickListener(listener);
@@ -57,7 +58,7 @@ public class SecendActivity extends AppCompatActivity {
         BtnShareWxSession.setOnClickListener(listener);
         BtnShareWxTimeLine = (Button) findViewById(R.id.btn_share_wxLine);
         BtnShareWxSession.setOnClickListener(listener);
-        BtnGOLogin=findViewById(R.id.go_login);
+        BtnGOLogin = findViewById(R.id.go_login);
         BtnGOLogin.setOnClickListener(listener);
     }
 

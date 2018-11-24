@@ -27,7 +27,7 @@ public class WXEntryActivity extends Activity {
     static {
         shareContent = new ShareContent("测试标题"
                 , "测试内容"
-                , "https://www.baidu.com"
+                , "http://f.amap.com/4cpb_07AMnu"
                 , "http://imgcache.qq.com/qzone/space_item/pre/0/66768.gif");
     }
 

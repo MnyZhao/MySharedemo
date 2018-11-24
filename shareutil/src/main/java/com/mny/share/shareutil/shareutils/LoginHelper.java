@@ -3,7 +3,6 @@ package com.mny.share.shareutil.shareutils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.support.annotation.Nullable;
 
 
 import com.mny.share.shareutil.shareutils.qq.QQLoginUtil;
@@ -28,7 +27,7 @@ public class LoginHelper {
     LoginCallBackListenr loginCallBackListenr;
 
     public LoginHelper(Activity mContext) {
-        this.mContext=mContext;
+        this.mContext = mContext;
         /*初始化appID*/
         Const.getInstance().initAppID(mContext);
     }
@@ -59,11 +58,12 @@ public class LoginHelper {
     /**
      * 设置接收监听事件QQ
      * 必须调用
+     *
      * @param requestCode
      * @param resultCode
      * @param data
      */
-    public void setQqStartActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    public void setQqStartActivityResult(int requestCode, int resultCode, Intent data) {
         if (requestCode == Constants.REQUEST_LOGIN ||
                 requestCode == Constants.REQUEST_APPBAR) {
             Tencent.onActivityResultData(requestCode, resultCode, data, qqLoginListener);
@@ -130,6 +130,7 @@ public class LoginHelper {
 
     /**
      * 初始化Sina  要进行登陆必须先进行初始化操作 在获取
+     *
      * @param context
      */
     public void initSina(Activity context) {
@@ -138,6 +139,7 @@ public class LoginHelper {
         //注册应用到sina
         registerAppToSina(context);
     }
+
     private SsoHandler ssoHandler;
 
     /**
@@ -165,6 +167,7 @@ public class LoginHelper {
     /**
      * 当调用sina登陆activity 销毁时调用 要在onactiviytresult中设置
      * 必须调用
+     *
      * @param requestCode
      * @param resultCode
      * @param data
@@ -194,8 +197,10 @@ public class LoginHelper {
     public interface LoginCallBackListenr<T> {
         /*成功返回登陆信息 可以通过instanceof 判断类型*/
         void onSuccess(T userInfo);
+
         /*失败返回登陆信息 可以通过instanceof 判断类型*/
         void onError(T errorInfo);
+
         /*用户取消*/
         void onCancel();
     }
