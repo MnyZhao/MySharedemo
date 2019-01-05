@@ -102,20 +102,27 @@ public class ShareHelperUtils {
         @Override
         public void onCancel() {
             Log.i(TAG, "ShareHelperUtils.onCancel" + "QQ取消分享");
-            callBackListener.onCancel();
+            if (null != callBackListener) {
+                callBackListener.onCancel();
+            }
+
         }
 
         @Override
         public void onComplete(Object response) {
             // TODO Auto-generated method stub
             Log.i(TAG, "ShareHelperUtils.onComplete" + "QQ分享成功");
-            callBackListener.onSuccess(response.toString());
+            if (null != callBackListener) {
+                callBackListener.onSuccess(response.toString());
+            }
         }
 
         @Override
         public void onError(UiError e) {
             Log.i(TAG, "ShareHelperUtils.onError" + "QQ分享失败" + e.errorMessage);
-            callBackListener.onError(e.errorMessage);
+            if (null != callBackListener) {
+                callBackListener.onError(e.errorMessage);
+            }
         }
     };
     /******************************QQ分享结束***************************************/
@@ -195,20 +202,26 @@ public class ShareHelperUtils {
         public void onWbShareSuccess() {
             Log.i(TAG, "onWbShareSuccess: ");
             String response = "分享成功";
-            callBackListener.onSuccess(response);
+            if (null != callBackListener) {
+                callBackListener.onSuccess(response);
+            }
         }
 
         @Override
         public void onWbShareCancel() {
             Log.i(TAG, "onWbShareCancel");
-            callBackListener.onCancel();
+            if (null != callBackListener) {
+                callBackListener.onCancel();
+            }
         }
 
         @Override
         public void onWbShareFail() {
             Log.i(TAG, "onWbShareFail");
             String e = "分享失败";
-            callBackListener.onError(e);
+            if (null != callBackListener) {
+                callBackListener.onError(e);
+            }
         }
     };
 
@@ -291,15 +304,21 @@ public class ShareHelperUtils {
             int result;
             switch (baseResp.errCode) {
                 case BaseResp.ErrCode.ERR_OK:
-                    callBackListener.onSuccess("分享成功");
+                    if (null != callBackListener) {
+                        callBackListener.onSuccess("分享成功");
+                    }
                     result = R.string.errcode_success;//发送成功
                     break;
                 case BaseResp.ErrCode.ERR_USER_CANCEL:
-                    callBackListener.onCancel();
+                    if (null != callBackListener) {
+                        callBackListener.onCancel();
+                    }
                     result = R.string.errcode_cancel;//发送取消
                     break;
                 case BaseResp.ErrCode.ERR_AUTH_DENIED:
-                    callBackListener.onError("分享失败" + "errorCode:" + baseResp.errCode + "errMsg" + baseResp.errStr);
+                    if (null != callBackListener) {
+                        callBackListener.onError("分享失败" + "errorCode:" + baseResp.errCode + "errMsg" + baseResp.errStr);
+                    }
                     result = R.string.errcode_deny;//发送被拒绝
                     break;
                 case BaseResp.ErrCode.ERR_UNSUPPORT:
