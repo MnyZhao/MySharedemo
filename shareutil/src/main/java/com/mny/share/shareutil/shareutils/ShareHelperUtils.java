@@ -274,6 +274,17 @@ public class ShareHelperUtils {
     }
 
     /**
+     * 发送到微信聊天界面
+     *
+     * @param context
+     * @param shareContent
+     * @param drawableId
+     */
+    public void shareWxSession(Context context, ShareContent shareContent, int drawableId) {
+        WXShareUtil.shareToWXSessixon(context, getIwxapi(context), shareContent, drawableId);
+    }
+
+    /**
      * 发送到微信朋友圈
      *
      * @param context
@@ -281,6 +292,17 @@ public class ShareHelperUtils {
      */
     public void shareWxTimeLine(Context context, ShareContent shareContent) {
         WXShareUtil.shareToWXTimeLine(context, getIwxapi(context), shareContent);
+    }
+
+    /**
+     * 发送到微信朋友圈
+     *
+     * @param context
+     * @param shareContent
+     * @param drawableId
+     */
+    public void shareWxTimeLine(Context context, ShareContent shareContent, int drawableId) {
+        WXShareUtil.shareToWXTimeLine(context, getIwxapi(context), shareContent, drawableId);
     }
 
     /**

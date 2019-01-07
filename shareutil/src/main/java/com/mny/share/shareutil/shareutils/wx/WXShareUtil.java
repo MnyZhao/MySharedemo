@@ -61,6 +61,33 @@ public class WXShareUtil {
     }
 
     /**
+     * 发送到聊天界面
+     *
+     * @param api
+     * @param shareContent
+     * @param drawableId
+     */
+    public static void shareToWXSessixon(Context context, IWXAPI api, ShareContent shareContent, int drawableId) {
+        if (0 == drawableId) {
+            drawableId = R.drawable.ic_launcher;
+        }
+        WXWebpageObject imgObj = new WXWebpageObject();
+        imgObj.webpageUrl = shareContent.url;
+        WXMediaMessage msg = new WXMediaMessage();
+        msg.mediaObject = imgObj;
+        msg.title = shareContent.title;
+        msg.description = shareContent.content;
+        Bitmap thumbBmp = BitmapFactory.decodeResource(context.getResources(), drawableId);
+        msg.thumbData = bmpToByteArray(thumbBmp, true);
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = buildTransaction("webpage");
+        req.message = msg;
+        req.scene = SendMessageToWX.Req.WXSceneSession;
+        api.sendReq(req);
+
+    }
+
+    /**
      * 分享到朋友圈
      *
      * @param api
@@ -74,6 +101,33 @@ public class WXShareUtil {
         msg.title = shareContent.title;
         msg.description = shareContent.content;
         Bitmap thumbBmp = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
+        msg.thumbData = bmpToByteArray(thumbBmp, true);
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = buildTransaction("webpage");
+        req.message = msg;
+        req.scene = SendMessageToWX.Req.WXSceneTimeline;
+        api.sendReq(req);
+
+    }
+
+    /**
+     * 分享到朋友圈
+     *
+     * @param api
+     * @param shareContent
+     * @param drawableId
+     */
+    public static void shareToWXTimeLine(Context context, IWXAPI api, ShareContent shareContent, int drawableId) {
+        if (0 == drawableId) {
+            drawableId = R.drawable.ic_launcher;
+        }
+        WXWebpageObject imgObj = new WXWebpageObject();
+        imgObj.webpageUrl = shareContent.url;
+        WXMediaMessage msg = new WXMediaMessage();
+        msg.mediaObject = imgObj;
+        msg.title = shareContent.title;
+        msg.description = shareContent.content;
+        Bitmap thumbBmp = BitmapFactory.decodeResource(context.getResources(), drawableId);
         msg.thumbData = bmpToByteArray(thumbBmp, true);
         SendMessageToWX.Req req = new SendMessageToWX.Req();
         req.transaction = buildTransaction("webpage");
