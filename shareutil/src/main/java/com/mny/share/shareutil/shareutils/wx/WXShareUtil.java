@@ -6,7 +6,9 @@ import android.graphics.BitmapFactory;
 
 import com.mny.share.shareutil.R;
 import com.mny.share.shareutil.shareutils.ShareContent;
+import com.mny.share.shareutil.shareutils.Util;
 import com.tencent.mm.opensdk.modelmsg.SendMessageToWX;
+import com.tencent.mm.opensdk.modelmsg.WXImageObject;
 import com.tencent.mm.opensdk.modelmsg.WXMediaMessage;
 import com.tencent.mm.opensdk.modelmsg.WXTextObject;
 import com.tencent.mm.opensdk.modelmsg.WXWebpageObject;
@@ -44,10 +46,10 @@ public class WXShareUtil {
      * @param shareContent
      */
     public static void shareToWXSessixon(Context context, IWXAPI api, ShareContent shareContent) {
-        WXWebpageObject imgObj = new WXWebpageObject();
-        imgObj.webpageUrl = shareContent.url;
+        WXWebpageObject webPageObj = new WXWebpageObject();
+        webPageObj.webpageUrl = shareContent.url;
         WXMediaMessage msg = new WXMediaMessage();
-        msg.mediaObject = imgObj;
+        msg.mediaObject = webPageObj;
         msg.title = shareContent.title;
         msg.description = shareContent.content;
         Bitmap thumbBmp = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
@@ -71,10 +73,10 @@ public class WXShareUtil {
         if (0 == drawableId) {
             drawableId = R.drawable.ic_launcher;
         }
-        WXWebpageObject imgObj = new WXWebpageObject();
-        imgObj.webpageUrl = shareContent.url;
+        WXWebpageObject webPageObj = new WXWebpageObject();
+        webPageObj.webpageUrl = shareContent.url;
         WXMediaMessage msg = new WXMediaMessage();
-        msg.mediaObject = imgObj;
+        msg.mediaObject = webPageObj;
         msg.title = shareContent.title;
         msg.description = shareContent.content;
         Bitmap thumbBmp = BitmapFactory.decodeResource(context.getResources(), drawableId);
@@ -94,10 +96,10 @@ public class WXShareUtil {
      * @param shareContent
      */
     public static void shareToWXTimeLine(Context context, IWXAPI api, ShareContent shareContent) {
-        WXWebpageObject imgObj = new WXWebpageObject();
-        imgObj.webpageUrl = shareContent.url;
+        WXWebpageObject webpageObj = new WXWebpageObject();
+        webpageObj.webpageUrl = shareContent.url;
         WXMediaMessage msg = new WXMediaMessage();
-        msg.mediaObject = imgObj;
+        msg.mediaObject = webpageObj;
         msg.title = shareContent.title;
         msg.description = shareContent.content;
         Bitmap thumbBmp = BitmapFactory.decodeResource(context.getResources(), R.drawable.ic_launcher);
@@ -121,10 +123,10 @@ public class WXShareUtil {
         if (0 == drawableId) {
             drawableId = R.drawable.ic_launcher;
         }
-        WXWebpageObject imgObj = new WXWebpageObject();
-        imgObj.webpageUrl = shareContent.url;
+        WXWebpageObject webPageObj = new WXWebpageObject();
+        webPageObj.webpageUrl = shareContent.url;
         WXMediaMessage msg = new WXMediaMessage();
-        msg.mediaObject = imgObj;
+        msg.mediaObject = webPageObj;
         msg.title = shareContent.title;
         msg.description = shareContent.content;
         Bitmap thumbBmp = BitmapFactory.decodeResource(context.getResources(), drawableId);
@@ -135,6 +137,64 @@ public class WXShareUtil {
         req.scene = SendMessageToWX.Req.WXSceneTimeline;
         api.sendReq(req);
 
+    }
+
+    /**
+     * 分享图片到微信好友
+     *
+     * @param api
+     * @param path
+     */
+    public static void ShareImageToWXSessixon(IWXAPI api, String path) {
+        // 创建WXImageObject对象，包装bitmap
+        WXImageObject image = new WXImageObject();
+        // 设置图片文件的路径
+        image.setImagePath(path);
+        WXMediaMessage msg = new WXMediaMessage();
+        msg.mediaObject = image;
+
+        //设置缩略图
+        Bitmap bitmap = BitmapFactory.decodeFile(path);
+        Bitmap thumbBmp = Bitmap.createScaledBitmap(bitmap, 120, 150, true);
+        bitmap.recycle();
+        msg.thumbData = Util.bmpToByteArray(thumbBmp, true);
+
+        //构造一个Req
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = buildTransaction("img");
+        req.message = msg;
+        req.scene = SendMessageToWX.Req.WXSceneSession;
+        //调用api接口，发送数据到微信
+        api.sendReq(req);
+    }
+
+    /**
+     * 分享图片到微信朋友圈
+     *
+     * @param api
+     * @param path
+     */
+    public static void ShareImageToWXTimeLine(IWXAPI api, String path) {
+        // 创建WXImageObject对象，包装bitmap
+        WXImageObject image = new WXImageObject();
+        // 设置图片文件的路径
+        image.setImagePath(path);
+        WXMediaMessage msg = new WXMediaMessage();
+        msg.mediaObject = image;
+
+        //设置缩略图
+        Bitmap bitmap = BitmapFactory.decodeFile(path);
+        Bitmap thumbBmp = Bitmap.createScaledBitmap(bitmap, 120, 150, true);
+        bitmap.recycle();
+        msg.thumbData = Util.bmpToByteArray(thumbBmp, true);
+
+        //构造一个Req
+        SendMessageToWX.Req req = new SendMessageToWX.Req();
+        req.transaction = buildTransaction("img");
+        req.message = msg;
+        req.scene = SendMessageToWX.Req.WXSceneTimeline;
+        //调用api接口，发送数据到微信
+        api.sendReq(req);
     }
 
     private static String buildTransaction(final String type) {

@@ -3,6 +3,7 @@ package com.mny.share.mysharedemo.wxapi;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
@@ -20,7 +21,7 @@ import com.mny.share.shareutil.shareutils.wx.WXShareUtil;
  * Crate by E470PD on 2018/8/8
  */
 public class WXEntryActivity extends Activity {
-    private Button BtnWx, BtnWXLine;
+    private Button BtnWx, BtnWXLine, BtnImageWXLine, BtnImageWXSession;
     static ShareContent shareContent;
     ShareHelperUtils shareHelperUtils;
 
@@ -48,6 +49,10 @@ public class WXEntryActivity extends Activity {
         BtnWx.setOnClickListener(listener);
         BtnWXLine = findViewById(R.id.btn_share_wxtimeline);
         BtnWXLine.setOnClickListener(listener);
+        BtnImageWXLine = findViewById(R.id.btn_share_image_line);
+        BtnImageWXLine.setOnClickListener(listener);
+        BtnImageWXSession = findViewById(R.id.btn_share_image_seession);
+        BtnImageWXSession.setOnClickListener(listener);
     }
 
     View.OnClickListener listener = new View.OnClickListener() {
@@ -56,13 +61,18 @@ public class WXEntryActivity extends Activity {
             switch (view.getId()) {
                 case R.id.btn_share_wxsession:
                     /*封装类后*/
-                    shareHelperUtils.shareWxSession(WXEntryActivity.this, shareContent);
+                    shareHelperUtils.shareWebPageWxSession(WXEntryActivity.this, shareContent);
 
                     break;
                 case R.id.btn_share_wxtimeline:
                     /*封装类后*/
-                    shareHelperUtils.shareWxTimeLine(WXEntryActivity.this, shareContent);
-
+                    shareHelperUtils.shareWebPageWxTimeLine(WXEntryActivity.this, shareContent);
+                    break;
+                case R.id.btn_share_image_line:
+                    shareHelperUtils.shareImageToWxTimeLine(WXEntryActivity.this, Environment.getExternalStorageDirectory().getPath() + "/Pictures/Screenshots/S90426-012113.jpg");
+                    break;
+                case R.id.btn_share_image_seession:
+                    shareHelperUtils.shareImageToWxSession(WXEntryActivity.this, Environment.getExternalStorageDirectory().getPath() + "/Pictures/Screenshots/S90426-012113.jpg");
                     break;
             }
         }

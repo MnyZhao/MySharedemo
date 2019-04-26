@@ -10,7 +10,7 @@
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/down"
-        android:text="ShareSession"
+        android:text="分享webpage到微信好友"
         android:textColor="@android:color/white" />
 
 
@@ -20,7 +20,25 @@
         android:layout_height="60dp"
         android:layout_marginTop="10dp"
         android:background="@drawable/down"
-        android:text="ShareTimeLine"
+        android:text="分享webpage到微信朋友圈"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_share_image_line"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/down"
+        android:text="分享image到微信朋友圈"
+        android:textColor="@android:color/white" />
+
+    <Button
+        android:id="@+id/btn_share_image_seession"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/down"
+        android:text="分享image到微信好友"
         android:textColor="@android:color/white" />
 
 </LinearLayout>

@@ -264,45 +264,64 @@ public class ShareHelperUtils {
     }
 
     /**
-     * 发送到微信聊天界面
+     * 发送WebPage到微信聊天界面
      *
      * @param context
      * @param shareContent
      */
-    public void shareWxSession(Context context, ShareContent shareContent) {
+    public void shareWebPageWxSession(Context context, ShareContent shareContent) {
         WXShareUtil.shareToWXSessixon(context, getIwxapi(context), shareContent);
     }
 
     /**
-     * 发送到微信聊天界面
+     * 发送WebPage到微信聊天界面
      *
      * @param context
      * @param shareContent
      * @param drawableId
      */
-    public void shareWxSession(Context context, ShareContent shareContent, int drawableId) {
+    public void shareWebPageWxSession(Context context, ShareContent shareContent, int drawableId) {
         WXShareUtil.shareToWXSessixon(context, getIwxapi(context), shareContent, drawableId);
     }
 
     /**
-     * 发送到微信朋友圈
+     * 发送WebPage到微信朋友圈
      *
      * @param context
      * @param shareContent
      */
-    public void shareWxTimeLine(Context context, ShareContent shareContent) {
+    public void shareWebPageWxTimeLine(Context context, ShareContent shareContent) {
         WXShareUtil.shareToWXTimeLine(context, getIwxapi(context), shareContent);
     }
 
     /**
-     * 发送到微信朋友圈
+     * 发送WebPage到微信朋友圈
      *
      * @param context
      * @param shareContent
      * @param drawableId
      */
-    public void shareWxTimeLine(Context context, ShareContent shareContent, int drawableId) {
+    public void shareWebPageWxTimeLine(Context context, ShareContent shareContent, int drawableId) {
         WXShareUtil.shareToWXTimeLine(context, getIwxapi(context), shareContent, drawableId);
+    }
+
+    /**
+     * 分享图片到微信朋友圈
+     *
+     * @param context
+     * @param imagePath
+     */
+    public void shareImageToWxTimeLine(Context context, String imagePath) {
+        WXShareUtil.ShareImageToWXTimeLine(getIwxapi(context), imagePath);
+    }
+    /**
+     * 分享图片到微信朋友圈
+     *
+     * @param context
+     * @param imagePath
+     */
+    public void shareImageToWxSession(Context context, String imagePath) {
+        WXShareUtil.ShareImageToWXSessixon(getIwxapi(context), imagePath);
     }
 
     /**
